@@ -53,19 +53,22 @@ public class MainActivityTest {
     }
 
     @Before
-    public void seedDatabase() {
+    public void seedDatabase() throws InterruptedException {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference moviesRef = db.collection("movies");
         Movie[] movies = {
                 new Movie("Oppenheimer", "Thriller/Historical Drama", 2023),
                 new Movie("Barbie", "Comedy/Fantasy", 2023)
         };
+        Thread.sleep(2000);
 
         for (Movie movie : movies) {
             DocumentReference docRef = moviesRef.document();
             movie.setId(docRef.getId());
             docRef.set(movie);
         }
+
+        Thread.sleep(2000);
     }
 
     @Test
@@ -128,7 +131,7 @@ public class MainActivityTest {
 
     @After
     public void tearDown() {
-        String projectId = "YOUR-PROJECT-ID";
+        String projectId = "lab08-796ee";
         URL url = null;
         try {
             url = new URL("http://10.0.2.2:8080/emulator/v1/projects/" + projectId + "/databases/(default)/documents");
