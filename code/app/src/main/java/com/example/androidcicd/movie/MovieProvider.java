@@ -43,6 +43,9 @@ public class MovieProvider {
             movieProvider = new MovieProvider(firestore);
         return movieProvider;
     }
+    public static void setInstanceForTesting(FirebaseFirestore firestore) {
+        movieProvider = new MovieProvider(firestore);
+    }
 
     public ArrayList<Movie> getMovies() {
         return movies;

@@ -33,6 +33,12 @@ android {
 }
 
 dependencies {
+
+    testImplementation("org.mockito:mockito-core:5.7.0")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+    implementation("net.bytebuddy:byte-buddy:1.17.1")
+
+
     implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
     implementation("com.google.firebase:firebase-firestore:25.1.2")
     implementation("androidx.appcompat:appcompat:1.7.0")
